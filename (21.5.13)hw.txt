@@ -1,0 +1,39 @@
+**** 8일차 오전 도전과제  - 순차적으로 완성해 나가세요.
+
+1> sqlite3 실행
+
+2> .open 'c:\\dd\\mydb'
+   sqlite> .mode column
+   sqlite> .header on
+
+c:\\dd\\m.txt
+
+해운대|윤제균|설경구|1139 
+광해|추창민|이병헌|1232 
+국제시장|윤재균|황정민|1318 
+도둑들|최동훈|전지현|1302 
+변호인|양우석|송강호|1137 
+
+3> 위 데이터를 저장할 테이블 생성하시오.
+   테이블명 : movie 
+   필드명 : title, director, actor, audience
+
+4> .import문을 사용하여 읽어 들이시오.
+
+5> 명량|김한민|최민식|1761 insert하시오.   
+   도둑들의 배우를 김혜수로 바꾸시오. update
+   국제시장을 삭제하시오. delete
+
+6> 비주얼 스튜디오 코드에서 코딩
+   mydb연결
+   Man(name, age) 테이블 생성 
+   아래 세명 insert 
+   김연아/32
+   손흥민/30
+   이강인/21
+   sqlite3에서 테이블생성, 조회로 확인
+
+7> movie테이블 관객순으로 불러와서 출력 
+   select * from movie order by audience desc
+
+8> 각자 블로그, 깃허브에 정리하기

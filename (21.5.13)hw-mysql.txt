@@ -1,0 +1,64 @@
+mysql> create database mydb;
+Query OK, 1 row affected (0.01 sec)
+
+mysql> use mydb
+Database changed
+
+mysql> create table movie(title char(30), actor char(10), audience int);
+Query OK, 0 rows affected (0.04 sec)
+
+mysql> desc movie;
++----------+----------+------+-----+---------+-------+
+| Field    | Type     | Null | Key | Default | Extra |
++----------+----------+------+-----+---------+-------+
+| title    | char(30) | YES  |     | NULL    |       |
+| actor    | char(10) | YES  |     | NULL    |       |
+| audience | int      | YES  |     | NULL    |       |
++----------+----------+------+-----+---------+-------+
+3 rows in set (0.00 sec)
+
+mysql> insert into movie values('해운대', '설경구', 1139);
+Query OK, 1 row affected (0.01 sec)
+
+mysql> insert into movie values('광해', '이병헌', 1139);
+Query OK, 1 row affected (0.01 sec)
+
+mysql> insert into movie values('도둑들', 'ㅓㄴ지현', 1302);
+Query OK, 1 row affected (0.01 sec)
+
+###
+mysql> update movie set audience = 1232 where title = '광해';
+Query OK, 1 row affected (0.01 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> update movie set actor = '전지현' where audience = 1302;
+Query OK, 1 row affected (0.01 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+###
+
+mysql> select * from movie;
++--------+--------+----------+
+| title  | actor  | audience |
++--------+--------+----------+
+| 해운대 | 설경구 |     1139 |
+| 광해   | 이병헌 |     1232 |
+| 도둑들 | 전지현 |     1302 |
++--------+--------+----------+
+3 rows in set (0.00 sec)
+
+
+
+
+
+mysql> use mydb;
+Database changed
+
+mysql> select * from Man;
++--------+------+
+| name   | age  |
++--------+------+
+| 김연아 |   32 |
+| 손흥민 |   30 |
+| 이강인 |   21 |
++--------+------+
+3 rows in set (0.00 sec)

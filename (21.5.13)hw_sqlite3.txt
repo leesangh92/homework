@@ -1,0 +1,75 @@
+sqlite> .open 'c:\\dd\\mydb'
+sqlite> .mode column
+sqlite> .header on
+
+sqlite> .table
+sqlite>create table movie(title, director, actor, audience);
+
+sqlite> .table
+movie
+
+sqlite> .import 'c:\\dd\\m.txt' movie
+sqlite> select * from movie;
+title  director  actor  audience
+-----  --------  -----  --------
+해운대    윤제균       설경구    1139
+광해     추창민       이병헌    1232
+국제시장   윤재균       황정민    1318
+도둑들    최동훈       전지현    1302
+변호인    양우석       송강호    1137
+
+sqlite> .schema
+CREATE TABLE movie(title, director, actor, audience);
+
+sqlite> insert into movie values('명량', '김한민', '최민식', 1761);
+sqlite> select * from movie;
+title  director  actor  audience
+-----  --------  -----  --------
+해운대    윤제균       설경구    1139
+광해     추창민       이병헌    1232
+국제시장   윤재균       황정민    1318
+도둑들    최동훈       전지현    1302
+변호인    양우석       송강호    1137
+명량     김한민       최민식    1761
+
+sqlite> update movie set actor='김혜수' where title='도둑들';
+sqlite> select * from movie;
+title  director  actor  audience
+-----  --------  -----  --------
+해운대    윤제균       설경구    1139
+광해     추창민       이병헌    1232
+국제시장   윤재균       황정민    1318
+도둑들    최동훈       김혜수    1302
+변호인    양우석       송강호    1137
+명량     김한민       최민식    1761
+
+sqlite> delete from movie where title='국제시장';
+sqlite> select * from movie;
+title  director  actor  audience
+-----  --------  -----  --------
+해운대    윤제균       설경구    1139
+광해     추창민       이병헌    1232
+도둑들    최동훈       김혜수    1302
+변호인    양우석       송강호    1137
+명량     김한민       최민식    1761
+
+sqlite> .open 'c:\\dd\\mydb'
+sqlite> .table
+Man    movie
+sqlite> .schema
+CREATE TABLE movie(title, director, actor, audience);
+CREATE TABLE Man(name, age);
+
+sqlite> select * from Man;
+name  age
+----  ---
+김연아   32
+손흥민   30
+이강인   21
+
+##########
+sqlite> create table Man_1(name char(20), age int);
+sqlite> .schema
+CREATE TABLE movie(title, director, actor, audience);
+CREATE TABLE Man(name, age);
+CREATE TABLE Man_1(name char(20), age int);
