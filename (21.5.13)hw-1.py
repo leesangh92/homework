@@ -9,14 +9,10 @@ c.execute('select * from movie')
 List = c.fetchall()
 print(List)
 
-# for문
-for i in range(3):
-    print(List[i][0], List[i][1], List[i][2])
-'''
 print(List[0][0], List[0][1], List[0][2])
 print(List[1][0], List[1][1], List[1][2])
 print(List[2][0], List[2][1], List[2][2])
-'''
+
 c.execute('insert into movie value("명량", "최민식", 1761)')
 c.execute('update movie set actor = "김혜수" where audience = 1302')
 c.execute('delete from movie where title = "광해"')
