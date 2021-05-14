@@ -1,0 +1,48 @@
+9일차 오후 과제...
+
+
+#############################################
+
+mysql 계정(account) 만들기 
+계정(account)
+id : ace
+pw : 1234
+사용DB : acedb
+
+*******************************************
+
+mysql> use mysql
+mysql> show  tables;
+mysql> create  database acedb;
+mysql> show  databases;
+
+mysql> create  user ace@'%' identified by '1234';
+mysql> grant all privileges on acedb.*  to  ace@'%' with grant option;
+mysql> flush  privileges;
+
+########################################################################
+
+
+위 참고해서 계정을 생성하시오.
+계정명 : ai, passwd : aiai
+사용DB : aidb
+
+새로운 connection 만들기 
+
+테이블 생성 : aitab 
+
+select  user();
+use aidb;
+show tables;
+
+create table aitab (
+	id int auto_increment primary key,
+	name varchar(20),
+    kor tinyint,
+    eng tinyint,
+    mat tinyint);
+    
+테이블에 insert후 select하기
+총점 역순으로 출력 
+
+결과 화면 캡쳐해서 올려주세요.
