@@ -1,0 +1,136 @@
+▶▶▶ 9일차 오전 도전과제 - 순차적으로 완성해 나가세요.
+
+  
+1> 계정(account) 추가  -- mysql, root계정으로 작업
+   id : mymy,  pw : 7777
+   사용DB : mydb
+
+2> mymy계정으로 mysql에 접속 
+    아래처럼 생긴 데이터를 저장할 테이블을 만드시오.
+    테이블 : oecd
+   필드: nation, poplation, popratio
+
+
+3> 레코드 3개 입력 
+   모두 조회
+   USA삭제
+   모두 삭제
+   테이블 완전 삭제 
+
+======================================================================
+
+MySQL command line client 창
+
+mysql> create user mymy@'%' identified by '7777';
+Query OK, 0 rows affected (0.02 sec)
+
+mysql> grant all privileges on mydb.* to mymy@'%' with grant option;
+Query OK, 0 rows affected (0.01 sec)
+
+mysql> flush privileges;
+Query OK, 0 rows affected (0.01 sec)
+
+=============================================================================
+
+cmd 창
+
+C:\Program Files\MySQL\MySQL Server 8.0\bin>mysql -u mymy -p
+Enter password: ****
+Welcome to the MySQL monitor.  Commands end with ; or \g.
+Your MySQL connection id is 67
+Server version: 8.0.25 MySQL Community Server - GPL
+
+Copyright (c) 2000, 2021, Oracle and/or its affiliates.
+
+Oracle is a registered trademark of Oracle Corporation and/or its
+affiliates. Other names may be trademarks of their respective
+owners.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+mysql> select user();
++----------------+
+| user()         |
++----------------+
+| mymy@localhost |
++----------------+
+1 row in set (0.00 sec)
+
+mysql> use mydb;
+Database changed
+mysql> create table oecd(nation varchar(50), population int, popratio float);
+Query OK, 0 rows affected (0.05 sec)
+
+mysql> desc oecd;
++------------+-------------+------+-----+---------+-------+
+| Field      | Type        | Null | Key | Default | Extra |
++------------+-------------+------+-----+---------+-------+
+| nation     | varchar(50) | YES  |     | NULL    |       |
+| population | int         | YES  |     | NULL    |       |
+| popratio   | float       | YES  |     | NULL    |       |
++------------+-------------+------+-----+---------+-------+
+3 rows in set (0.02 sec)
+
+mysql> insert into oecd values('USA', 318816000, 4.39);
+Query OK, 1 row affected (0.01 sec)
+
+mysql> insert into oecd values('SKorea', 50423955, 0.69);
+Query OK, 1 row affected (0.01 sec)
+
+mysql> insert into oecd values('France', 565991000, 0.91);
+Query OK, 1 row affected (0.01 sec)
+
+mysql> select * from oecd;
++--------+------------+----------+
+| nation | population | popratio |
++--------+------------+----------+
+| USA    |  318816000 |     4.39 |
+| SKorea |   50423955 |     0.69 |
+| France |  565991000 |     0.91 |
++--------+------------+----------+
+
+mysql> delete from oecd where nation = 'USA';
+Query OK, 1 row affected (0.01 sec)
+
+mysql> select * from oecd;
++--------+------------+----------+
+| nation | population | popratio |
++--------+------------+----------+
+| SKorea |   50423955 |     0.69 |
+| France |  565991000 |     0.91 |
++--------+------------+----------+
+2 rows in set (0.00 sec)
+
+mysql> delete from oecd where nation = 'SKorea';
+Query OK, 1 row affected (0.01 sec)
+
+mysql> delete from oecd where popratio = 0.91;
+Query OK, 0 rows affected (0.01 sec)
+
+mysql> select * from oecd;
++--------+------------+----------+
+| nation | population | popratio |
++--------+------------+----------+
+| France |  565991000 |     0.91 |
++--------+------------+----------+
+1 row in set (0.00 sec)
+
+mysql> delete from oecd where nation = 'France';
+Query OK, 1 row affected (0.00 sec)
+
+mysql> select * from oecd;
+Empty set (0.00 sec)
+
+mysql> drop table oecd;
+Query OK, 0 rows affected (0.06 sec)
+
+mysql> desc oecd;
+ERROR 1146 (42S02): Table 'mydb.oecd' doesn't exist
+mysql> show tables;
++----------------+
+| Tables_in_mydb |
++----------------+
+| man            |
+| movie          |
++----------------+
+2 rows in set (0.01 sec)
