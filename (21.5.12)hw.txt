@@ -38,3 +38,8 @@ xl.cell(row = 6, column = 4).value = avg
 
 pay.save('c:\\dd\\outitx.xlsx')
 pay.close()
+
+--------------------------------------------------
+
+def index(request):
+ return HttpResponse('<hr>오늘은 수요일<body text=red><br>')
